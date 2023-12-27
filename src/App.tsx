@@ -22,7 +22,7 @@ function App() {
   // Function to send messages to establish WebRTC connections
   const sendMessage = useCallback(async (type: string, data: string, to: string) => {
     try {
-      const response = await fetch(`http://127.0.0.1:8080/webrtc/connect`, {
+      const response = await fetch(`https://web-rtc-backend-delta.vercel.app/webrtc/connect`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -121,7 +121,7 @@ function App() {
   const handleJoinRoom = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://127.0.0.1:8080/common/createroom`, {
+      const response = await fetch(`https://web-rtc-backend-delta.vercel.app/common/createroom`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -180,7 +180,7 @@ function App() {
 
   // Effect to set up event listeners
   useEffect(() => {
-    pc.onicecandidate = e => {
+    pc.onicecandidate = () => {
       console.log('New ICE ', pc.localDescription);
     }
 
